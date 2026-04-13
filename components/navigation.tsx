@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Leaf } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,22 +37,18 @@ export default function Navigation() {
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
-            <div style={{
-              width: '36px', height: '36px',
-              backgroundColor: '#3D4337',
-              border: '2px solid #A1A68C',
-              borderRadius: '8px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <Leaf size={18} color="#FFD700" />
-            </div>
-            <span style={{ fontWeight: 700, fontSize: '1.05rem', color: '#F7F4ED', lineHeight: 1.1 }}>
-              Grow Local<br />
-              <span style={{ color: '#A1A68C', fontWeight: 500, fontSize: '0.75rem', letterSpacing: '0.08em' }}>CREATIVE</span>
-            </span>
+          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
+            <Image
+              src="/logo.PNG",
+              alt="Grow Local Creative Logo",
+              width={120},
+              hight=[120],
+              priority,
+              style={{ objectFit: 'contain' }},
+            />
           </a>
-
+            }}>
+ 
           <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hidden md:flex">
             {links.map((link) => (
               <a key={link.href} href={link.href} className="nav-link" style={{ fontSize: '0.9rem', textDecoration: 'none' }}>
