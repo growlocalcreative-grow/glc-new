@@ -36,18 +36,16 @@ export default function Navigation() {
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
-          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
-            <Image
-              src="/logo.PNG",
-              alt="Grow Local Creative Logo",
-              width={120},
-              hight=[120],
-              priority,
-              style={{ objectFit: 'contain' }},
-            />
-          </a>
-            }}>
+        <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
+  <Image 
+    src="/logo.PNG" 
+    alt="Grow Local Creative Logo" 
+    width={120} 
+    height={40} 
+    priority 
+    style={{ objectFit: 'contain' }}
+  />
+</a>
  
           <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hidden md:flex">
             {links.map((link) => (
