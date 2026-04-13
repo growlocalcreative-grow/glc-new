@@ -1,7 +1,7 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Menu, X } from 'lucide-react'; // Ensure these are imported if used
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function Navigation() {
     { label: 'Services', href: '#services' },
     { label: 'Spotlight', href: '#spotlight' },
     { label: "What's Next", href: '#coming' },
-  ];
+  ]; // This closing bracket was likely the issue
 
   return (
     <nav
@@ -35,58 +35,50 @@ export default function Navigation() {
         backdropFilter: scrolled ? 'blur(8px)' : 'none',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
-  <Image 
-    src="/logo.PNG" 
-    alt="Grow Local Creative Logo" 
-    width={120} 
-    height={40} 
-    priority 
-    style={{ objectFit: 'contain' }}
-  />
-</a>
- 
-          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hidden md:flex">
-            {links.map((link) => (
-              <a key={link.href} href={link.href} className="nav-link" style={{ fontSize: '0.9rem', textDecoration: 'none' }}>
-                {link.label}
-              </a>
-            ))}
-            <a href="#contact" className="btn-gold" style={{ padding: '0.5rem 1.2rem', fontSize: '0.875rem', borderRadius: '5px', textDecoration: 'none' }}>
-              Let&apos;s Talk
-            </a>
-          </div>
+          <Image 
+            src="/logo.PNG" 
+            alt="Grow Local Creative Logo" 
+            width={120} 
+            height={40} 
+            priority 
+            style={{ objectFit: 'contain' }}
+          />
+        </a>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#F7F4ED', padding: '0.25rem' }}
-            className="md:hidden"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {isOpen && (
-        <div style={{ backgroundColor: '#2d3129', borderTop: '1px solid rgba(161,166,140,0.2)', padding: '1rem 1.5rem 1.5rem' }} className="md:hidden">
+        {/* Desktop Menu */}
+        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hidden md:flex">
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              style={{ display: 'block', color: '#F7F4ED', padding: '0.75rem 0', textDecoration: 'none', fontSize: '1rem', fontWeight: 500, borderBottom: '1px solid rgba(161,166,140,0.15)' }}
-            >
+            <a key={link.href} href={link.href} className="nav-link" style={{ fontSize: '0.9rem', textDecoration: 'none', color: '#F7F4ED' }}>
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setIsOpen(false)}
-            className="btn-gold"
-            style={{ marginTop: '1.25rem', display: 'inline-flex', textDecoration: 'none' }}
-          >
-            Let&apos;s Talk
+          <a href="#contact" className="btn-gold" style={{ padding: '0.5rem 1.2rem', fontSize: '0.875rem', borderRadius: '5px', textDecoration: 'none' }}>
+            Let's Talk
+          </a>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          onClick={() => setIsOpen(!isOpen)} 
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#F7F4ED', padding: '0.25rem' }} 
+          className="md:hidden"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div style={{ backgroundColor: '#2d3129', borderTop: '1px solid rgba(161,166,140,0.2)', padding: '1rem 1.5rem 1.5rem' }} className="md:hidden">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} onClick={() => setIsOpen(false)} style={{ display: 'block', color: '#F7F4ED', padding: '0.75rem 0', textDecoration: 'none', fontSize: '1rem', fontWeight: 500, borderBottom: '1px solid rgba(161,166,140,0.15)' }}>
+              {link.label}
+            </a>
+          ))}
+          <a href="#contact" onClick={() => setIsOpen(false)} className="btn-gold" style={{ marginTop: '1.25rem', display: 'inline-flex', textDecoration: 'none' }}>
+            Let's Talk
           </a>
         </div>
       )}
