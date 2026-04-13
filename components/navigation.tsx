@@ -40,8 +40,8 @@ export default function Navigation() {
           <Image 
             src="/logo.PNG" 
             alt="Grow Local Creative Logo" 
-            width={120} 
-            height={40} 
+            width={80} 
+            height={30} 
             priority 
             style={{ objectFit: 'contain' }}
           />
